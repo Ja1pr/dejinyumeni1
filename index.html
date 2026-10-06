@@ -117,7 +117,7 @@ const S = [
  {s:'apostol', n:'sv. Pavel', a:'meč, kniha', d:'Dříve Šavel, pronásledovatel křesťanů; oslepen a obrácen. Sťat mečem.', p:'pavel'},
  {s:'apostol', n:'sv. Jan', a:'orel, kalich s jedovatým hádkem (otrávené víno)', d:'„Miláček Páně“, stál pod křížem, napsal evangelium a Apokalypsu. Pokus ho otrávit.', p:'jan-ap'},
  // Světoví svatí
- {s:'svet', n:'sv. Růža', a:'štětec, paleta, kniha', d:'Patron a ochránce dějin umění.', p:'ruza'},
+ {s:'svet', n:'sv. Růža', a:'štětec, paleta, kniha', d:'Patron a ochránce dějin umění.', p:'img/file_000000009c108210bba01ffab58a52be.png'},
  {s:'svet', n:'sv. Martin', a:'voják na (bílém) koni dělí mečem plášť s žebrákem', d:'Římský voják, později poustevník a biskup v Tours. Svátek 11. 11. – „přijel na bílém koni“.', p:'martin'},
  {s:'svet', n:'sv. Apolena', a:'kleště se zubem', d:'Vytrhali jí zuby; pomocnice při bolesti zubů, patronka zubařů.', p:'apolena'},
  {s:'svet', n:'sv. Kateřina Alexandrijská', a:'(prasklé) ozubené kolo, meč, koruna', d:'Učená princezna, odmítla pohanského císaře; kolo při mučení prasklo, sťata mečem. Patronka studentů a univerzit.', p:'katerina'},
@@ -148,7 +148,8 @@ const save=()=>{try{localStorage.setItem('svati',JSON.stringify({f:filter}))}cat
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const secName=id=>SECTIONS.find(x=>x.id===id).name;
 function card(x){
-  const pic = x.p ? `<img src="img/${x.p}.jpg" alt="" loading="lazy">`
+  const imgSrc = x.p ? (x.p.includes('.') ? x.p : `img/${x.p}.jpg`) : '';
+  const pic = x.p ? `<img src="${imgSrc}" alt="" loading="lazy">`
                   : `${svg(x.i)}<span class="noimg">atribut (obrázek v zápiscích chybí)</span>`;
   return `<article class="card" data-k="${x.k}" tabindex="0">
     <figure class="pic">${pic}</figure>
