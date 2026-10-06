@@ -1,19 +1,9 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Svatí a atributy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <style>
-:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}
-img{max-width:100%}
-[hidden]:not([hidden=until-found i]){display:none!important}
-
 /* Layout: one study wall — sticky control strip, then a responsive grid of picture cards grouped by section; quiz mode covers the text. */
 :root{
   --bg:#eceef3; --surface:#ffffff; --panel:#f5f3ee; --fg:#1a2140; --muted:#5b6380; --line:#d4d8e3;
@@ -74,8 +64,6 @@ section h2 small{font-family:var(--body);font-size:14px;color:var(--muted);font-
 @media (prefers-reduced-motion:no-preference){.card{transition:transform .15s}.quiz .card:hover{transform:translateY(-2px)}}
 @media (max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card h3{font-size:19px}.attr{font-size:15px}.note{font-size:13.5px}.txt{padding:10px}}
 </style>
-</head>
-<body>
 
 <div class="wrap">
   <header>
@@ -117,7 +105,6 @@ const S = [
  {s:'apostol', n:'sv. Pavel', a:'meč, kniha', d:'Dříve Šavel, pronásledovatel křesťanů; oslepen a obrácen. Sťat mečem.', p:'pavel'},
  {s:'apostol', n:'sv. Jan', a:'orel, kalich s jedovatým hádkem (otrávené víno)', d:'„Miláček Páně“, stál pod křížem, napsal evangelium a Apokalypsu. Pokus ho otrávit.', p:'jan-ap'},
  // Světoví svatí
- {s:'svet', n:'sv. Růža', a:'štětec, paleta, kniha', d:'Patron a ochránce dějin umění.', p:'img/file_000000009c108210bba01ffab58a52be.png'},
  {s:'svet', n:'sv. Martin', a:'voják na (bílém) koni dělí mečem plášť s žebrákem', d:'Římský voják, později poustevník a biskup v Tours. Svátek 11. 11. – „přijel na bílém koni“.', p:'martin'},
  {s:'svet', n:'sv. Apolena', a:'kleště se zubem', d:'Vytrhali jí zuby; pomocnice při bolesti zubů, patronka zubařů.', p:'apolena'},
  {s:'svet', n:'sv. Kateřina Alexandrijská', a:'(prasklé) ozubené kolo, meč, koruna', d:'Učená princezna, odmítla pohanského císaře; kolo při mučení prasklo, sťata mečem. Patronka studentů a univerzit.', p:'katerina'},
@@ -135,7 +122,8 @@ const S = [
  {s:'svet', n:'sv. Helena', a:'císařovna s korunou a křížem', d:'Matka Konstantina Velikého (313 povolil křesťanství); v Palestině našla Kristův kříž.', p:'helena'},
  {s:'svet', n:'sv. Jiří', a:'rytíř na koni zabíjí kopím draka', d:'Zachránil město a princeznu; patron rytířů a Anglie. Svátek 24. 4.', p:'jiri'},
  {s:'svet', n:'sv. Norbert', a:'monstrance, pod nohama ďábel/kacíř', d:'Zakladatel premonstrátů, pohřben na Strahově.', p:'norbert'},
- {s:'svet', n:'sv. František z Assisi', a:'stigmata (rány na rukou a nohou), hnědý hábit s provazem, ptáci', d:'Rozdal majetek, chudoba a pokora, žebravé řády, sv. Klára, kázal ptáčkům.', p:'frantisek'}
+ {s:'svet', n:'sv. František z Assisi', a:'stigmata (rány na rukou a nohou), hnědý hábit s provazem, ptáci', d:'Rozdal majetek, chudoba a pokora, žebravé řády, sv. Klára, kázal ptáčkům.', p:'frantisek'},
+ {s:'svet', n:'sv. ???', a:'[Atribut]', d:'[Popis]', p:'img/file_000000009c108210bba01ffab58a52be.png'}
 ];
 S.forEach((x,k)=>x.k=k);
 
@@ -148,8 +136,8 @@ const save=()=>{try{localStorage.setItem('svati',JSON.stringify({f:filter}))}cat
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const secName=id=>SECTIONS.find(x=>x.id===id).name;
 function card(x){
-  const imgSrc = x.p ? (x.p.includes('.') ? x.p : `img/${x.p}.jpg`) : '';
-  const pic = x.p ? `<img src="${imgSrc}" alt="" loading="lazy">`
+  const picSrc = x.p ? (x.p.includes('/') || x.p.includes('.') ? (x.p.startsWith('img/') ? x.p : `img/${x.p}`) : `img/${x.p}.jpg`) : null;
+  const pic = picSrc ? `<img src="${picSrc}" alt="" loading="lazy">`
                   : `${svg(x.i)}<span class="noimg">atribut (obrázek v zápiscích chybí)</span>`;
   return `<article class="card" data-k="${x.k}" tabindex="0">
     <figure class="pic">${pic}</figure>
@@ -189,5 +177,4 @@ out.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDef
 render();
 </script>
 
-</body>
-</html>
+</body></html>
