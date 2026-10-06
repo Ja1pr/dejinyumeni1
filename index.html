@@ -68,7 +68,7 @@ section h2 small{font-family:var(--body);font-size:14px;color:var(--muted);font-
 <div class="wrap">
   <header>
     <h1>Svatí a jejich atributy</h1>
-    <p>Podle zápisků z dějin umění, bez českých patronů. Obrázky jsou z tvých zápisků. Kde chyběly, je nakreslený atribut. V režimu <strong>Zkoušení</strong> se jména schovají a karty se odkrývají klepnutím.</p>
+    <p>Podle zápisků z dějin umění: apoštolové Petr, Pavel a Jan a světoví svatí (bez českých patronů). Obrázky jsou z tvých zápisků. Kde chyběly, je nakreslený atribut. V režimu <strong>Zkoušení</strong> se jména schovají a karty se odkrývají klepnutím.</p>
   </header>
 
   <div class="bar" role="toolbar" aria-label="Filtr a režim">
@@ -95,9 +95,7 @@ const ICON = {
 const svg = k => `<svg viewBox="0 0 120 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>`;
 
 const SECTIONS = [
- {id:'apostol', name:'Apoštolové', sub:'Dvanáct Ježíšových učedníků + Pavel a Matěj'},
- {id:'evang', name:'Evangelisté', sub:'Čtyři symboly: člověk/anděl, lev, býk, orel'},
- {id:'otec', name:'Církevní otcové', sub:'Čtyři západní učitelé církve'},
+ {id:'apostol', name:'Apoštolové', sub:'Petr, Pavel a Jan'},
  {id:'svet', name:'Světoví svatí', sub:'Mučedníci, biskupové a řeholníci'}
 ];
 
@@ -106,27 +104,6 @@ const S = [
  {s:'apostol', n:'sv. Petr', a:'klíče, kohout', d:'Hlavní apoštol, 3× zapřel Krista, první papež, ukřižován hlavou dolů v Římě.', p:'petr'},
  {s:'apostol', n:'sv. Pavel', a:'meč, kniha', d:'Dříve Šavel, pronásledovatel křesťanů; oslepen a obrácen. Sťat mečem.', p:'pavel'},
  {s:'apostol', n:'sv. Jan', a:'orel, kalich s jedovatým hádkem (otrávené víno)', d:'„Miláček Páně“, stál pod křížem, napsal evangelium a Apokalypsu. Pokus ho otrávit.', p:'jan-ap'},
- {s:'apostol', n:'sv. Jakub Větší', a:'mušle, poutnická hůl, klobouk', d:'Patron poutníků (Santiago de Compostela).', p:'jakub-v'},
- {s:'apostol', n:'sv. Jakub Menší', a:'valchářská hůl, kloboučnický luk', d:'Ubit valchářskou holí.', i:'jakub-m'},
- {s:'apostol', n:'sv. Ondřej', a:'ondřejský kříž (tvar X)', d:'Rybář, Petrův bratr; ukřižován na šikmém kříži.', p:'ondrej'},
- {s:'apostol', n:'sv. Filip', a:'kříž (latinský, často na dlouhé holi)', d:'Ukřižován.', i:'filip'},
- {s:'apostol', n:'sv. Tomáš', a:'kopí (+ úhelník)', d:'„Nevěřící Tomáš“ – vložil prsty do Kristových ran.', p:'tomas'},
- {s:'apostol', n:'sv. Juda Tadeáš', a:'kyj, halapartna', d:'Nezaměňovat s Jidášem Iškariotským.', i:'juda'},
- {s:'apostol', n:'sv. Bartoloměj', a:'nůž, vlastní stažená kůže', d:'Zaživa stažen z kůže.', i:'bartolomej'},
- {s:'apostol', n:'sv. Šimon', a:'pila', d:'Podle legendy rozřezán pilou.', p:'simon'},
- {s:'apostol', n:'sv. Matouš', a:'anděl (okřídlený člověk), měšec', d:'Evangelista, dříve celník.', p:'matous'},
- {s:'apostol', n:'sv. Matěj', a:'sekera', d:'Zvolen jako náhradník za Jidáše.', p:'matej'},
- {s:'apostol', n:'Jidáš Iškariotský', a:'měšec', d:'Zradil Krista za 30 stříbrných, pak se oběsil.', i:'jidas'},
- // Evangelisté
- {s:'evang', n:'sv. Matouš', a:'anděl (okřídlený člověk)', d:'Evangelium začíná Ježíšovým rodokmenem – proto člověk.', p:'matous'},
- {s:'evang', n:'sv. Marek', a:'lev', d:'Patron Benátek (okřídlený lev sv. Marka).', p:'marek'},
- {s:'evang', n:'sv. Lukáš', a:'býk', d:'Podle legendy portrétoval Pannu Marii – patron malířů.', p:'lukas'},
- {s:'evang', n:'sv. Jan', a:'orel / kalich s jedovatou potvůrkou', d:'Stejný Jan jako apoštol „Miláček Páně“.', p:'jan-ev'},
- // Církevní otcové
- {s:'otec', n:'sv. Augustin', a:'hořící srdce', d:'Biskup v Hippu, autor Vyznání.', p:'augustin'},
- {s:'otec', n:'sv. Jeroným', a:'kardinál (červený klobouk) / poustevník se lvem', d:'Přeložil Bibli do latiny (Vulgáta); lvovi vytáhl trn z tlapy.', p:'jeronym'},
- {s:'otec', n:'sv. Řehoř Veliký', a:'papež s trojitou korunou (tiárou), holubice', d:'Papež; podle něj gregoriánský chorál.', p:'rehor'},
- {s:'otec', n:'sv. Ambrož', a:'včelí úl', d:'Biskup v Miláně, „medová ústa“ – výborný kazatel.', p:'ambroz'},
  // Světoví svatí
  {s:'svet', n:'sv. Martin', a:'voják na (bílém) koni dělí mečem plášť s žebrákem', d:'Římský voják, později poustevník a biskup v Tours. Svátek 11. 11. – „přijel na bílém koni“.', p:'martin'},
  {s:'svet', n:'sv. Apolena', a:'kleště se zubem', d:'Vytrhali jí zuby; pomocnice při bolesti zubů, patronka zubařů.', p:'apolena'},
